@@ -175,4 +175,25 @@ public class Comment {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", commentPostId=" + commentPostId +
+                ", author='" + author + '\'' +
+                ", authorEmail='" + authorEmail + '\'' +
+                ", authorUrl='" + authorUrl + '\'' +
+                ", authorIp='" + authorIp + '\'' +
+                ", date=" + date +
+                ", dateGmt=" + dateGmt +
+                ", content='" + content + '\'' +
+                ", karma='" + karma + '\'' +
+                ", approved='" + approved + '\'' +
+                ", agent='" + agent + '\'' +
+                ", commentType='" + commentType + '\'' +
+                ", commentParent='" + commentParent + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }
