@@ -2,9 +2,6 @@ package com.dsmanioto.blog.controller;
 
 import com.dsmanioto.blog.model.Comment;
 import com.dsmanioto.blog.repository.CommentRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,23 +32,11 @@ class CommentControllerTest {
     }
 
     @Test
-    void success_getComments() throws JsonProcessingException {
-
-
+    void success_getComments() {
         ResponseEntity<?> comments = commentController.getComments();
         Assertions.assertThat(comments).isNotNull();
         Assertions.assertThat(comments.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(comments.getBody()).isNotNull();
-
-        ObjectMapper mapper = new ObjectMapper();
-        System.out.println(comments.getBody().toString());
-        List<Comment> commentList = mapper.readValue(comments.getBody().toString(),  new TypeReference<List<Comment>>(){});
-        Assertions.assertThat(commentList).isNotNull();
-        Assertions.assertThat(commentList.get(0).getAuthor()).isEqualTo("daniel smanioto");
-        Assertions.assertThat(commentList.get(0).getAuthorEmail()).isEqualTo("asdkljaklsjdlasd@sajdkasdcom");
-
-        Assertions.assertThat(commentList.get(1).getAuthor()).isEqualTo("daniela smanioto");
-        Assertions.assertThat(commentList.get(1).getAuthorEmail()).isEqualTo("asdklaaklsjdlasd@sajdkasdcom");
     }
 
     private List<Comment> getAllComments() {
